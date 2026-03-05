@@ -1,0 +1,40 @@
+name: Build Snippet Index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'snippets/**/*.md'
+      - 'build-index.js'
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build index.json
+        run: node build-index.js
+
+      - name: Check for changes
+        id: diff
+        run: |
+          git diff --quiet snippets/index.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated index
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snippets/index.json
+          git commit -m "chore: auto-update snippet index"
+          git push
