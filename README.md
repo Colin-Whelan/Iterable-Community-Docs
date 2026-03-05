@@ -2,34 +2,35 @@
 
 Community-driven snippets, guides, and tips for [Iterable](https://iterable.com) email marketing.
 
-**Live site:** [Colin Whelan.github.io/iterable-community-docs](https://Colin Whelan.github.io/iterable-community-docs/)
+**Live site:** [aericode.github.io/iterable-community-docs](https://aericode.github.io/iterable-community-docs/)
 
 ## What's Here
 
-- **Snippets** — Handlebars code snippets for Iterable templates, organized by category with search and one-click copy
-- **Guides** — Data practices, journey samples, and walkthroughs *(coming soon)*
-- **Tips** — Quick tips, best practices, and workflow tricks *(coming soon)*
-- **Bugs** — Known quirks with community-sourced workarounds *(coming soon)*
+- **Snippets** — Handlebars code snippets for Iterable templates
+- **Guides** — Data practices, journey samples, and walkthroughs
+- **Tips** — Quick tips, best practices, and workflow tricks
+- **Bugs** — Known quirks with community-sourced workarounds
 
-## Adding a Snippet
+## Adding Content
 
-1. Create a `.md` file in the appropriate category folder under `snippets/`:
+All four sections work the same way. Create a `.md` file in the appropriate section and category folder:
 
 ```
-snippets/
-├── personalization/
-├── logic/
-├── formatting/
-└── data-feeds/
+snippets/logic/my-snippet.md
+guides/data-practices/segment-setup.md
+tips/general/quick-preview-trick.md
+bugs/deliverability/outlook-image-sizing.md
 ```
 
-2. Use this frontmatter format:
+### Frontmatter Format
+
+Every `.md` file uses the same frontmatter schema:
 
 ```markdown
 ---
-title: Your Snippet Title
-description: A brief explanation of what this snippet does.
-category: personalization
+title: Your Title Here
+description: A brief explanation of what this content covers.
+category: logic
 tags: [tag1, tag2, tag3]
 context: email-template
 author: your-handle
@@ -37,31 +38,26 @@ links:
   - label: Relevant Docs
     url: https://support.iterable.com/...
 ---
+
+Your full markdown content goes here. Use standard markdown:
+prose, multiple code blocks, images, tables, etc.
 ```
 
-3. Add your code in a fenced block immediately after the frontmatter:
+### Rebuild the Index
 
-````markdown
-```handlebars
-{{#if yourVariable}}
-  Your template code here
-{{/if}}
-```
-````
-
-4. Rebuild the index:
+After adding or editing content, run:
 
 ```bash
 node build-index.js
 ```
 
-That's it — `snippets/index.json` is auto-generated from the frontmatter. Don't edit it by hand.
+This regenerates `index.json` for each section from the frontmatter. Don't edit index files by hand.
 
-A GitHub Action also runs this automatically on push whenever `.md` files in `snippets/` change, so if you forget the local step it'll self-correct on CI.
+A GitHub Action also runs this automatically on push whenever `.md` files change, so if you forget the local step it'll self-correct on CI.
 
 ## Running Locally
 
-No framework or build step required. Serve the root directory over HTTP:
+No framework required. Serve the root directory over HTTP:
 
 ```bash
 npx serve .
@@ -69,12 +65,13 @@ npx serve .
 
 Then open `http://localhost:3000`.
 
-> **Note:** Opening `index.html` directly as a `file://` path won't work because the site fetches snippet files via `fetch()`, which browsers block for local files.
+> **Note:** Opening `index.html` directly as a `file://` path won't work because the site uses `fetch()` to load content, which browsers block for local files.
 
 ## Tech Stack
 
 - Static HTML/JS/CSS — no framework, no build step
-- [Prism.js](https://prismjs.com/) for syntax highlighting (Handlebars + JS, loaded via CDN)
+- [marked.js](https://marked.js.org/) for markdown rendering (CDN)
+- [Prism.js](https://prismjs.com/) for syntax highlighting — Handlebars, JS, CSS, JSON (CDN)
 - Dark/light theme with dark default
 - GitHub Pages ready (no Jekyll)
 
@@ -82,20 +79,21 @@ Then open `http://localhost:3000`.
 
 ```
 ├── index.html              # App shell
-├── build-index.js          # Generates index.json from .md frontmatter
-├── css/style.css           # Theming and layout
+├── build-index.js          # Generates index.json for all sections
+├── css/style.css           # Theming, layout, markdown body styles
 ├── js/
 │   ├── app.js              # Router, nav, theme toggle
-│   ├── snippets.js         # Snippet loader, search, categories
-│   └── modal.js            # Modal viewer with copy + highlighting
-├── snippets/
-│   ├── index.json          # Auto-generated snippet manifest
-│   ├── personalization/    # Category folders with .md files
-│   ├── logic/
-│   ├── formatting/
-│   └── data-feeds/
+│   └── content.js          # Content loader, search, card grid, detail pages
+├── snippets/               # Snippet .md files in category folders
+│   └── index.json          # Auto-generated
+├── guides/                 # Guide .md files in category folders
+│   └── index.json
+├── tips/                   # Tip .md files in category folders
+│   └── index.json
+├── bugs/                   # Bug .md files in category folders
+│   └── index.json
 ├── .github/workflows/
-│   └── build-index.yml     # Auto-rebuild index on push
+│   └── build-index.yml     # Auto-rebuild indexes on push
 └── .nojekyll               # Skip Jekyll on GitHub Pages
 ```
 

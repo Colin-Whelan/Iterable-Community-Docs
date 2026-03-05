@@ -2,10 +2,9 @@
 title: String Loop Workaround (Nested Each Hack)
 description: Iterable's Handlebars doesn't support traditional for-loops or numeric iteration. This workaround abuses the `each` helper on an empty string to create a loop counter, using nested `each` blocks for exponentially larger iteration counts. 1 level = 23 iterations, 2 nested = 529, 3 nested = 12,167.
 category: logic
-tags: [loop, workaround, iteration, each, assign, math, advanced]
+tags: [loop, workaround, advanced]
 context: email-template
 author: Colin Whelan
-links: []
 ---
 
 ```handlebars

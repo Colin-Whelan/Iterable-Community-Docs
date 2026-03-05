@@ -2,8 +2,8 @@
 
 /**
  * build-index.js
- * Scans all .md files under snippets/ and generates snippets/index.json
- * from their frontmatter. Run after adding or editing snippets.
+ * Scans all .md files under each content directory (snippets/, guides/, tips/, bugs/)
+ * and generates an index.json for each from their frontmatter.
  *
  * Usage: node build-index.js
  */
@@ -11,15 +11,24 @@
 const fs = require('fs');
 const path = require('path');
 
-const SNIPPETS_DIR = path.join(__dirname, 'snippets');
-const OUTPUT_FILE = path.join(SNIPPETS_DIR, 'index.json');
+const ROOT = __dirname;
 
-// Category display order (add new categories here to control sort)
+// Content sections to index. Each gets its own index.json.
+const SECTIONS = ['snippets', 'guides', 'tips', 'bugs'];
+
+// Category display order per section (shared — add section-specific overrides if needed)
 const CATEGORY_ORDER = [
-  'personalization',
+  'components',
   'logic',
+  'personalization',
   'formatting',
   'data-feeds',
+  // Guides / Tips / Bugs categories — add as needed
+  'getting-started',
+  'data-practices',
+  'journeys',
+  'deliverability',
+  'general',
 ];
 
 function parseFrontmatter(text) {
@@ -32,23 +41,20 @@ function parseFrontmatter(text) {
   let currentListObj = null;
 
   for (const line of yaml.split('\n')) {
-    // Top-level key with inline value
     const kvMatch = line.match(/^(\w[\w-]*)\s*:\s*(.+)$/);
     if (kvMatch) {
       currentListObj = null;
       const key = kvMatch[1];
       let val = kvMatch[2].trim();
-
-      // Inline array: [a, b, c]
       if (val.startsWith('[') && val.endsWith(']')) {
-        val = val.slice(1, -1).split(',').map(s => s.trim().replace(/^['"]|['"]$/g, ''));
+        const inner = val.slice(1, -1).trim();
+        val = inner ? inner.split(',').map(s => s.trim().replace(/^['"]|['"]$/g, '')) : [];
       }
       data[key] = val;
       currentKey = key;
       continue;
     }
 
-    // Key with no inline value (starts a list)
     const emptyKeyMatch = line.match(/^(\w[\w-]*)\s*:\s*$/);
     if (emptyKeyMatch) {
       currentKey = emptyKeyMatch[1];
@@ -57,7 +63,6 @@ function parseFrontmatter(text) {
       continue;
     }
 
-    // List item with key-value (object start): "  - label: ..."
     const listObjMatch = line.match(/^\s+-\s+(\w+)\s*:\s*(.+)$/);
     if (listObjMatch && currentKey) {
       if (!Array.isArray(data[currentKey])) data[currentKey] = [];
@@ -67,14 +72,12 @@ function parseFrontmatter(text) {
       continue;
     }
 
-    // Continuation key in list object: "    url: ..."
     const contMatch = line.match(/^\s{4,}(\w+)\s*:\s*(.+)$/);
     if (contMatch && currentListObj) {
       currentListObj[contMatch[1]] = contMatch[2].trim();
       continue;
     }
 
-    // Simple list item: "  - value"
     const listMatch = line.match(/^\s+-\s+(.+)$/);
     if (listMatch && currentKey) {
       if (!Array.isArray(data[currentKey])) data[currentKey] = [];
@@ -86,43 +89,48 @@ function parseFrontmatter(text) {
 }
 
 function findMdFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
   const results = [];
-
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const fullPath = path.join(dir, entry.name);
-
     if (entry.isDirectory()) {
       results.push(...findMdFiles(fullPath));
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
       results.push(fullPath);
     }
   }
-
   return results;
 }
 
-function buildIndex() {
-  const mdFiles = findMdFiles(SNIPPETS_DIR);
-  const snippets = [];
+function buildSectionIndex(section) {
+  const dir = path.join(ROOT, section);
+  const outputFile = path.join(dir, 'index.json');
+
+  if (!fs.existsSync(dir)) {
+    // Create the directory so index.json can live there
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  const mdFiles = findMdFiles(dir);
+  const items = [];
 
   for (const filePath of mdFiles) {
-    const relPath = path.relative(SNIPPETS_DIR, filePath);
+    const relPath = path.relative(dir, filePath);
     const slug = relPath.replace(/\.md$/, '').replace(/\\/g, '/');
 
     const content = fs.readFileSync(filePath, 'utf-8');
     const fm = parseFrontmatter(content);
 
     if (!fm) {
-      console.warn(`⚠  Skipping ${relPath} — no frontmatter found`);
+      console.warn(`  ⚠  Skipping ${section}/${relPath} — no frontmatter`);
       continue;
     }
-
     if (!fm.title) {
-      console.warn(`⚠  Skipping ${relPath} — missing title`);
+      console.warn(`  ⚠  Skipping ${section}/${relPath} — missing title`);
       continue;
     }
 
-    snippets.push({
+    items.push({
       slug,
       title: fm.title,
       description: fm.description || '',
@@ -133,28 +141,40 @@ function buildIndex() {
     });
   }
 
-  // Sort: by category order first, then alphabetically by title within each category
-  snippets.sort((a, b) => {
+  // Sort by category order, then alphabetically by title
+  items.sort((a, b) => {
     const catA = CATEGORY_ORDER.indexOf(a.category);
     const catB = CATEGORY_ORDER.indexOf(b.category);
     const orderA = catA === -1 ? 999 : catA;
     const orderB = catB === -1 ? 999 : catB;
-
     if (orderA !== orderB) return orderA - orderB;
     return a.title.localeCompare(b.title);
   });
 
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(snippets, null, 2) + '\n');
+  fs.writeFileSync(outputFile, JSON.stringify(items, null, 2) + '\n');
 
-  console.log(`✓  Generated ${OUTPUT_FILE}`);
-  console.log(`   ${snippets.length} snippet${snippets.length !== 1 ? 's' : ''} indexed`);
+  return items;
+}
 
-  // Show breakdown by category
-  const cats = {};
-  snippets.forEach(s => { cats[s.category] = (cats[s.category] || 0) + 1; });
-  for (const [cat, count] of Object.entries(cats)) {
-    console.log(`   · ${cat}: ${count}`);
+// --- Main ---
+console.log('Building content indexes…\n');
+
+let totalItems = 0;
+
+for (const section of SECTIONS) {
+  const items = buildSectionIndex(section);
+  totalItems += items.length;
+
+  if (items.length) {
+    console.log(`✓  ${section}/index.json — ${items.length} item${items.length !== 1 ? 's' : ''}`);
+    const cats = {};
+    items.forEach(i => { cats[i.category] = (cats[i.category] || 0) + 1; });
+    for (const [cat, count] of Object.entries(cats)) {
+      console.log(`   · ${cat}: ${count}`);
+    }
+  } else {
+    console.log(`·  ${section}/index.json — empty (directory will be created)`);
   }
 }
 
-buildIndex();
+console.log(`\nDone. ${totalItems} total items across ${SECTIONS.length} sections.`);

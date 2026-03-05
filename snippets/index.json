@@ -1,14 +1,26 @@
 [
   {
-    "slug": "personalization/dynamic-greeting",
-    "title": "Dynamic Greeting by Time of Day",
-    "description": "Shows morning, afternoon, or evening greeting based on the current hour at send time. Uses dateFormat to extract the hour and conditional logic to branch.",
-    "category": "personalization",
+    "slug": "components/multi-step-progress-bar",
+    "title": "Multi-Step Progress Bar with Labels (Outlook Safe)",
+    "description": "A segmented step-based progress bar with custom labels per step (up to 6). Supports configurable active/inactive colors, dynamic step count, and MSO conditional rendering for Outlook. Steps auto-hide based on total_steps so unused segments don't render.",
+    "category": "components",
     "tags": [
-      "time",
-      "greeting",
-      "conditional",
-      "dateFormat"
+      "progress-bar",
+      "steps",
+      "email-component"
+    ],
+    "context": "email-template",
+    "author": "Colin Whelan"
+  },
+  {
+    "slug": "components/simple-progress-bar",
+    "title": "Simple Progress Bar (Outlook Safe)",
+    "description": "A percentage-based progress bar with configurable color and width. Uses MSO conditional comments for Outlook compatibility with fixed-width fallback, and fluid percentage widths for modern clients. Includes a label row showing the percentage value.",
+    "category": "components",
+    "tags": [
+      "progress-bar",
+      "math",
+      "email-component"
     ],
     "context": "email-template",
     "author": "Colin Whelan"
@@ -35,11 +47,21 @@
     "tags": [
       "loop",
       "workaround",
-      "iteration",
-      "each",
-      "assign",
-      "math",
       "advanced"
+    ],
+    "context": "email-template",
+    "author": "Colin Whelan"
+  },
+  {
+    "slug": "personalization/dynamic-greeting",
+    "title": "Dynamic Greeting by Time of Day",
+    "description": "Shows morning, afternoon, or evening greeting based on the current hour at send time. Uses dateFormat to extract the hour and conditional logic to branch.",
+    "category": "personalization",
+    "tags": [
+      "time",
+      "greeting",
+      "conditional",
+      "dateFormat"
     ],
     "context": "email-template",
     "author": "Colin Whelan"
@@ -69,32 +91,6 @@
       "data-feed",
       "iteration",
       "products"
-    ],
-    "context": "email-template",
-    "author": "Colin Whelan"
-  },
-  {
-    "slug": "components/multi-step-progress-bar",
-    "title": "Multi-Step Progress Bar with Labels (Outlook Safe)",
-    "description": "A segmented step-based progress bar with custom labels per step (up to 6). Supports configurable active/inactive colors, dynamic step count, and MSO conditional rendering for Outlook. Steps auto-hide based on total_steps so unused segments don't render.",
-    "category": "components",
-    "tags": [
-      "progress-bar",
-      "steps",
-      "email-component"
-    ],
-    "context": "email-template",
-    "author": "Colin Whelan"
-  },
-  {
-    "slug": "components/simple-progress-bar",
-    "title": "Simple Progress Bar (Outlook Safe)",
-    "description": "A percentage-based progress bar with configurable color and width. Uses MSO conditional comments for Outlook compatibility with fixed-width fallback, and fluid percentage widths for modern clients. Includes a label row showing the percentage value.",
-    "category": "components",
-    "tags": [
-      "progress-bar",
-      "math",
-      "email-component"
     ],
     "context": "email-template",
     "author": "Colin Whelan"

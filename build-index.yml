@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'snippets/**/*.md'
+      - 'guides/**/*.md'
+      - 'tips/**/*.md'
+      - 'bugs/**/*.md'
       - 'build-index.js'
 
 jobs:
@@ -28,13 +31,13 @@ jobs:
       - name: Check for changes
         id: diff
         run: |
-          git diff --quiet snippets/index.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --quiet -- '*/index.json' && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
 
-      - name: Commit updated index
+      - name: Commit updated indexes
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add snippets/index.json
-          git commit -m "chore: auto-update snippet index"
+          git add */index.json
+          git commit -m "chore: auto-update content indexes"
           git push
