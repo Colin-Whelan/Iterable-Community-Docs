@@ -408,7 +408,6 @@ a:hover { text-decoration: underline; }
 }
 .snippet-card:hover {
   background: var(--bg-card-hover);
-  border-color: var(--border-accent);
   box-shadow: var(--shadow-glow);
   transform: translateY(-1px);
 }
