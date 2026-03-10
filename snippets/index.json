@@ -19,7 +19,6 @@
     "category": "components",
     "tags": [
       "progress-bar",
-      "math",
       "email-component"
     ],
     "context": "email-template",
@@ -28,7 +27,7 @@
   {
     "slug": "logic/generic-looping",
     "title": "Generic for-loop",
-    "description": "Iterable's Handlebars doesn't support traditional for-loops or numeric iteration. This workaround abuses the `each` helper on an empty string to create a loop counter, using nested `each` blocks for exponentially larger iteration counts. 1 level = 23 iterations, 2 nested = 529, 3 nested = 12,167.",
+    "description": "Iterable's Handlebars doesn't support traditional for-loops or numeric iteration.",
     "category": "logic",
     "tags": [
       "loop",
@@ -44,10 +43,7 @@
     "description": "Demonstrates nested if/else logic with a safe fallback value when user profile fields may be missing.",
     "category": "logic",
     "tags": [
-      "conditional",
-      "fallback",
-      "null-check",
-      "if-else"
+      "conditional"
     ],
     "context": "email-template",
     "author": "Colin Whelan"
@@ -55,42 +51,11 @@
   {
     "slug": "personalization/dynamic-greeting",
     "title": "Dynamic Greeting by Time of Day",
-    "description": "Shows morning, afternoon, or evening greeting based on the current hour at send time. Uses dateFormat to extract the hour and conditional logic to branch.",
+    "description": "Shows morning, afternoon, or evening greeting based on the current hour at send time.",
     "category": "personalization",
     "tags": [
-      "time",
-      "greeting",
-      "conditional",
-      "dateFormat"
-    ],
-    "context": "email-template",
-    "author": "Colin Whelan"
-  },
-  {
-    "slug": "formatting/currency-format",
-    "title": "Currency Formatting with Locale",
-    "description": "Format a numeric price value as a currency string. Handles decimal places and prepends the currency symbol.",
-    "category": "formatting",
-    "tags": [
-      "currency",
-      "number",
-      "formatting",
-      "price"
-    ],
-    "context": "email-template",
-    "author": "Colin Whelan"
-  },
-  {
-    "slug": "data-feeds/data-feed-loop",
-    "title": "Loop Through Data Feed Items",
-    "description": "Iterate over a data feed collection to render product cards or list items dynamically. Includes an index counter and empty-state fallback.",
-    "category": "data-feeds",
-    "tags": [
-      "loop",
-      "each",
-      "data-feed",
-      "iteration",
-      "products"
+      "datetime",
+      "conditional"
     ],
     "context": "email-template",
     "author": "Colin Whelan"

@@ -543,7 +543,7 @@ a:hover { text-decoration: underline; }
 }
 
 .detail-body {
-  padding: 32px;
+  margin: 32px;
 }
 
 .detail-links {

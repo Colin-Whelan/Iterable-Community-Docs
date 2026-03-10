@@ -1,14 +1,16 @@
 ---
 title: Dynamic Greeting by Time of Day
-description: Shows morning, afternoon, or evening greeting based on the current hour at send time. Uses dateFormat to extract the hour and conditional logic to branch.
+description: Shows morning, afternoon, or evening greeting based on the current hour at send time. 
 category: personalization
-tags: [time, greeting, conditional, dateFormat]
+tags: [datetime, conditional]
 context: email-template
 author: Colin Whelan
 links:
   - label: Iterable Date Functions
     url: https://support.iterable.com/hc/en-us/articles/205480365-Date-and-Time-Formatting
 ---
+
+Shows morning, afternoon, or evening greeting based on the current hour at send time. Uses dateFormat to extract the hour and conditional logic to branch.
 
 ```handlebars
 {{#if (greaterThan (toInteger (dateFormat currentDate "H")) 17)}}

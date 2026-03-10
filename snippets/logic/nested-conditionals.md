@@ -2,7 +2,7 @@
 title: Nested Conditional with Fallback
 description: Demonstrates nested if/else logic with a safe fallback value when user profile fields may be missing.
 category: logic
-tags: [conditional, fallback, null-check, if-else]
+tags: [conditional]
 context: email-template
 author: Colin Whelan
 links:

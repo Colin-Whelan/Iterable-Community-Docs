@@ -2,7 +2,7 @@
 title: Simple Progress Bar (Outlook Safe)
 description: A percentage-based progress bar with configurable color and width.
 category: components
-tags: [progress-bar, math, email-component]
+tags: [progress-bar, email-component]
 context: email-template
 author: Colin Whelan
 links: []
