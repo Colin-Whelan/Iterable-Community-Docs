@@ -14,6 +14,35 @@
     "author": "Colin Whelan"
   },
   {
+    "slug": "profiles/dynamic-list-checker",
+    "title": "Dynamic List Checker",
+    "description": "Checks which dynamic lists a user belongs to and displays the results directly inside the Iterable UI.",
+    "category": "Profiles",
+    "tags": [
+      "profiles",
+      "segmentation",
+      "dynamic-lists",
+      "productivity",
+      "debugging"
+    ],
+    "context": "user-profile",
+    "author": "Colin Whelan"
+  },
+  {
+    "slug": "templates/image-path-selector",
+    "title": "Image Path Selector",
+    "description": "Replaces Iterable’s default image picker with a faster folder-based selector designed for image-only email workflows.",
+    "category": "Templates",
+    "tags": [
+      "images",
+      "templates",
+      "productivity",
+      "asset-management"
+    ],
+    "context": "template-editor",
+    "author": "Colin Whelan"
+  },
+  {
     "slug": "global/user-lookup-bar",
     "title": "Persistent User Lookup Bar",
     "description": "Adds a global search interface to the Iterable navigation bar for quickly finding users by Email or User ID without leaving your current page.",
@@ -39,6 +68,20 @@
       "custom-ui"
     ],
     "context": "user-profile",
+    "author": "Colin Whelan"
+  },
+  {
+    "slug": "templates/utm-param-selector",
+    "title": "UTM Parameter Selector",
+    "description": "Adds a safe UTM parameter selector to the Iterable Drag-and-Drop and HTML editors for faster, error-free link tagging.",
+    "category": "Templates",
+    "tags": [
+      "utm",
+      "links",
+      "analytics",
+      "productivity"
+    ],
+    "context": "template-editor",
     "author": "Colin Whelan"
   }
 ]

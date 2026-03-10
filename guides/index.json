@@ -1,17 +1,16 @@
 [
   {
-    "slug": "handlebars/test",
-    "title": "Iterable Segmentation Logic: Handling Exclusions and Events",
-    "description": "A guide on troubleshooting complex exclusion logic in Iterable, specifically regarding 'Any' vs 'All' groupings with 'None' criteria and handling custom event objects.",
-    "category": "segmentation",
+    "slug": "handlebars/working-with-dates",
+    "title": "Working with Dates",
+    "description": "A comprehensive guide to formatting, comparing, and calculating dates using Handlebars helpers in Iterable email templates.",
+    "category": "logic",
     "tags": [
-      "iterable",
-      "segmentation",
-      "logic",
-      "events",
-      "dynamic-lists"
+      "handlebars",
+      "date-formatting",
+      "date-math",
+      "personalization"
     ],
-    "context": "chat-discussion",
-    "author": "Iterable Community"
+    "context": "email-template",
+    "author": "iterable-docs-bot"
   }
 ]
