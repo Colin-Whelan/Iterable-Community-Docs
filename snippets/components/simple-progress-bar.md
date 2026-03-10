@@ -10,7 +10,7 @@ links: []
 
 A percentage-based progress bar with configurable color and width. Uses MSO conditional comments for Outlook compatibility with fixed-width fallback, and fluid percentage widths for modern clients. Includes a label row showing the percentage value.
 
-![Simple Progress Bar](../../assets/images/simple-progress-bar.png)
+![Simple Progress Bar](https://raw.githubusercontent.com/Colin-Whelan/Iterable-Community-Docs/refs/heads/main/assets/images/simple-progress-bar.png)
 
 ```handlebars
 {{!-- CONFIG --}}
