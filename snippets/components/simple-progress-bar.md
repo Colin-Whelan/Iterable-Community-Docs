@@ -1,12 +1,16 @@
 ---
 title: Simple Progress Bar (Outlook Safe)
-description: A percentage-based progress bar with configurable color and width. Uses MSO conditional comments for Outlook compatibility with fixed-width fallback, and fluid percentage widths for modern clients. Includes a label row showing the percentage value.
+description: A percentage-based progress bar with configurable color and width.
 category: components
 tags: [progress-bar, math, email-component]
 context: email-template
 author: Colin Whelan
 links: []
 ---
+
+A percentage-based progress bar with configurable color and width. Uses MSO conditional comments for Outlook compatibility with fixed-width fallback, and fluid percentage widths for modern clients. Includes a label row showing the percentage value.
+
+![Simple Progress Bar](../../assets/images/simple-progress-bar.png)
 
 ```handlebars
 {{!-- CONFIG --}}

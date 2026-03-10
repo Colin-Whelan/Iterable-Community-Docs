@@ -26,6 +26,19 @@
     "author": "Colin Whelan"
   },
   {
+    "slug": "logic/generic-looping",
+    "title": "Generic 'for' loop",
+    "description": "Iterable's Handlebars doesn't support traditional for-loops or numeric iteration. This workaround abuses the `each` helper on an empty string to create a loop counter, using nested `each` blocks for exponentially larger iteration counts. 1 level = 23 iterations, 2 nested = 529, 3 nested = 12,167.",
+    "category": "logic",
+    "tags": [
+      "loop",
+      "workaround",
+      "advanced"
+    ],
+    "context": "email-template",
+    "author": "Colin Whelan"
+  },
+  {
     "slug": "logic/nested-conditionals",
     "title": "Nested Conditional with Fallback",
     "description": "Demonstrates nested if/else logic with a safe fallback value when user profile fields may be missing.",
@@ -35,19 +48,6 @@
       "fallback",
       "null-check",
       "if-else"
-    ],
-    "context": "email-template",
-    "author": "Colin Whelan"
-  },
-  {
-    "slug": "logic/generic-looping",
-    "title": "String Loop Workaround (Nested Each Hack)",
-    "description": "Iterable's Handlebars doesn't support traditional for-loops or numeric iteration. This workaround abuses the `each` helper on an empty string to create a loop counter, using nested `each` blocks for exponentially larger iteration counts. 1 level = 23 iterations, 2 nested = 529, 3 nested = 12,167.",
-    "category": "logic",
-    "tags": [
-      "loop",
-      "workaround",
-      "advanced"
     ],
     "context": "email-template",
     "author": "Colin Whelan"
