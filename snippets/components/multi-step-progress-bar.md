@@ -10,7 +10,7 @@ links: []
 
 A segmented step-based progress bar with custom labels per step (up to 6). Supports configurable active/inactive colors, dynamic step count, and MSO conditional rendering for Outlook. Steps auto-hide based on total_steps so unused segments don't render.
 
-Customize the labels below as needed. Remove label `assign` if not needed. Add more (up to 6) and the output auto-adjusts.
+Customize the labels below as needed. Remove `{{#assign "label_#"}}Label{{/assign}}` as needed. Add more (up to 6) and the output auto-adjusts.
 
 
 ![Multi-step Progress Bar](https://raw.githubusercontent.com/Colin-Whelan/Iterable-Community-Docs/refs/heads/main/assets/images/multi-step-progress-bar.png)
