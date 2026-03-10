@@ -13,7 +13,7 @@ A segmented step-based progress bar with custom labels per step (up to 6). Suppo
 Customize the labels below as needed. Remove `{{#assign "label_#"}}Label{{/assign}}` as needed. Add more (up to 6) and the output auto-adjusts.
 
 
-![Multi-step Progress Bar](https://raw.githubusercontent.com/Colin-Whelan/Iterable-Community-Docs/refs/heads/main/assets/images/multi-step-progress-bar.png)
+![Multi-step Progress Bar](assets/images/multi-step-progress-bar.png)
 
 
 ```handlebars

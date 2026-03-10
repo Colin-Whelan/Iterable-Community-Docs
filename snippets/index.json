@@ -2,7 +2,7 @@
   {
     "slug": "components/multi-step-progress-bar",
     "title": "Multi-Step Progress Bar with Labels (Outlook Safe)",
-    "description": "A segmented step-based progress bar with custom labels per step (up to 6). Supports configurable active/inactive colors, dynamic step count, and MSO conditional rendering for Outlook. Steps auto-hide based on total_steps so unused segments don't render.",
+    "description": "A segmented step-based progress bar with custom labels per step (up to 6).",
     "category": "components",
     "tags": [
       "progress-bar",
@@ -15,7 +15,7 @@
   {
     "slug": "components/simple-progress-bar",
     "title": "Simple Progress Bar (Outlook Safe)",
-    "description": "A percentage-based progress bar with configurable color and width. Uses MSO conditional comments for Outlook compatibility with fixed-width fallback, and fluid percentage widths for modern clients. Includes a label row showing the percentage value.",
+    "description": "A percentage-based progress bar with configurable color and width.",
     "category": "components",
     "tags": [
       "progress-bar",
@@ -27,7 +27,7 @@
   },
   {
     "slug": "logic/generic-looping",
-    "title": "Generic 'for' loop",
+    "title": "Generic for-loop",
     "description": "Iterable's Handlebars doesn't support traditional for-loops or numeric iteration. This workaround abuses the `each` helper on an empty string to create a loop counter, using nested `each` blocks for exponentially larger iteration counts. 1 level = 23 iterations, 2 nested = 529, 3 nested = 12,167.",
     "category": "logic",
     "tags": [
