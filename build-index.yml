@@ -8,6 +8,7 @@ on:
       - 'guides/**/*.md'
       - 'tips/**/*.md'
       - 'bugs/**/*.md'
+      - 'scripts/**/*.md'
       - 'build-index.js'
 
 jobs:

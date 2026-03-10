@@ -375,9 +375,9 @@ a:hover { text-decoration: underline; }
 
 .category-chevron {
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 30px;
   transition: transform var(--transition-fast);
-  margin-left: auto;
+  line-height: 20px;
 }
 .category-section.collapsed .category-chevron {
   transform: rotate(-90deg);
@@ -403,13 +403,11 @@ a:hover { text-decoration: underline; }
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
 }
 .snippet-card:hover {
   background: var(--bg-card-hover);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-1px);
 }
 
 .snippet-card-title {

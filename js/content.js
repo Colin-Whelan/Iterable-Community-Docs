@@ -31,6 +31,12 @@ const Content = (() => {
       contentDir: 'bugs',
       icon: '🐛',
     },
+    scripts: {
+      title: 'Extensions (scripts)',
+      description: 'Custom scripts and extensions for Iterable.',
+      contentDir: 'scripts',
+      icon: '⚙',
+    },
   };
 
   // State
@@ -397,6 +403,8 @@ const Content = (() => {
 
   // --- Frontmatter Parser ---
   function parseFrontmatter(text) {
+    // Normalize line endings to LF (handles CRLF from Windows)
+    text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
     const frontmatter = {};
     let body = text;
 

@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "slug": "handlebars/test",
+    "title": "Iterable Segmentation Logic: Handling Exclusions and Events",
+    "description": "A guide on troubleshooting complex exclusion logic in Iterable, specifically regarding 'Any' vs 'All' groupings with 'None' criteria and handling custom event objects.",
+    "category": "segmentation",
+    "tags": [
+      "iterable",
+      "segmentation",
+      "logic",
+      "events",
+      "dynamic-lists"
+    ],
+    "context": "chat-discussion",
+    "author": "Iterable Community"
+  }
+]

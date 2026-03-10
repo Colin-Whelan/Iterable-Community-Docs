@@ -2,7 +2,7 @@
 
 /**
  * build-index.js
- * Scans all .md files under each content directory (snippets/, guides/, tips/, bugs/)
+ * Scans all .md files under each content directory (snippets/, guides/, tips/, bugs/, scripts/)
  * and generates an index.json for each from their frontmatter.
  *
  * Usage: node build-index.js
@@ -14,7 +14,7 @@ const path = require('path');
 const ROOT = __dirname;
 
 // Content sections to index. Each gets its own index.json.
-const SECTIONS = ['snippets', 'guides', 'tips', 'bugs'];
+const SECTIONS = ['snippets', 'guides', 'tips', 'bugs', 'scripts'];
 
 // Category display order per section (shared — add section-specific overrides if needed)
 const CATEGORY_ORDER = [
@@ -23,15 +23,21 @@ const CATEGORY_ORDER = [
   'personalization',
   'formatting',
   'data-feeds',
-  // Guides / Tips / Bugs categories — add as needed
+  // General:
   'getting-started',
   'data-practices',
   'journeys',
   'deliverability',
   'general',
+  // Scripts:
+  'global',
+  'profiles',
+  // Guides / Tips / Bugs / Scripts categories — add as needed
 ];
 
 function parseFrontmatter(text) {
+  // Normalize line endings to LF (handles CRLF from Windows)
+  text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   const match = text.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return null;
 
