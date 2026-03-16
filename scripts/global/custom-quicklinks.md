@@ -25,15 +25,6 @@ links:
 
 ---
 
-### Installation Steps
-
-To add custom shortcuts to your Iterable workspace:
-
-1.  **Install a Userscript Manager:** Ensure you have **Tampermonkey** or **Greasemonkey** installed.
-2.  **Install the Script:** Click the link below and select "Install" when prompted:
-    * [Install Custom Quicklinks](https://raw.githubusercontent.com/Colin-Whelan/userscripts/refs/heads/main/scripts/sites/iterable/Custom%20Quicklinks.js)
-3.  **Refresh Iterable:** Open any `app.iterable.com` page.
-
 ### How to Configure Your Links
 
 1.  **Open Settings:** Click on the **Tampermonkey icon** in your browser extension bar.

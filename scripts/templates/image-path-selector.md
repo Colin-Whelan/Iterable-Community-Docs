@@ -22,15 +22,7 @@ This script replaces the standard selection workflow with a **folder-style navig
 
 - **Persistent Settings:** Preferences and cached data are stored locally using the userscript manager. Image Path Selector will always open the last viewed location.
 
-## Installation
-
-1. **Install a Userscript Manager:** Install Tampermonkey or Greasemonkey in your browser.
-
-2. **Install the Script:** Use the link below to install the latest version.
-
-3. **Open the Template Editor:** Navigate to the Iterable template editor. **In some cases, the page may need to be refreshed to show initially.**
-
-4. **Use the Image Selector:** When selecting or inserting an image, the enhanced image browser will appear.
+---
 
 ## How It Works
 

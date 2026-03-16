@@ -47,6 +47,8 @@ The script prevents common URL mistakes that frequently occur when manually edit
 
 - **Safe Parameter Updates:** If the parameter already exists in the URL, the value is updated rather than appended again.
 
+---
+
 ## How It Works
 
 1. When editing a link inside the template editor, a **“Add Param”** button appears next to the URL field.

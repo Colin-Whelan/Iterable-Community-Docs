@@ -33,7 +33,12 @@ const Content = (() => {
     },
     scripts: {
       title: 'Extensions (scripts)',
-      description: 'Custom scripts and extensions for Iterable.',
+      description: `Custom scripts and extensions for Iterable.
+      <br><br>
+      1. Install <a href="https://www.tampermonkey.net/" target="_blank">TamperMonkey</a> on the browser of your choice - Pinning it to the toolbar is recommended. <br>
+      2. Copy the 'Script Source' URL at the bottom of each script page.<br>
+      3. In TamperMonkey, create a new script and paste the URL into the source field. Save and enable the script to activate it on your Iterable account!
+      `,
       contentDir: 'scripts',
       icon: '⚙',
     },

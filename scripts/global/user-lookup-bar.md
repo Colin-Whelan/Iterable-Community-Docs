@@ -25,16 +25,6 @@ The **User Lookup Bar** is a productivity sctipt that injects a search interface
 
 ---
 
-### Installation Steps
-
-To add this feature to your Iterable instance, follow these steps:
-
-1.  **Install a Userscript Manager:** Ensure you have **Tampermonkey** or **Greasemonkey** installed in your browser.
-2.  **Install the Script:** Click the link below to open the raw script file:
-    * [Install User Lookup Bar](https://raw.githubusercontent.com/Colin-Whelan/userscripts/refs/heads/main/scripts/sites/iterable/User%20Lookup%20Bar.js)
-3.  **Confirm Installation:** Your userscript manager will prompt you to "Install." Click **Install**.
-4.  **Refresh Iterable:** Open or refresh any `app.iterable.com` tab to see the new search bar in your navigation.
-
 ### How to Use
 
 | Task | Action |

@@ -34,15 +34,7 @@ The results are displayed in a side panel within the Iterable interface, allowin
 
 - **Visual Timestamp Indicators:** Last check timestamps are color-coded to indicate how recent the data is.
 
-## Installation
-
-1. **Install a Userscript Manager:** Ensure Tampermonkey or Greasemonkey is installed in your browser.
-
-2. **Install the Script:** Use the link below to install the latest version.
-
-3. **Open a Profile Page:** Navigate to any user profile in `app.iterable.com`.
-
-4. **Open Lists View:** When viewing the lists section for a profile, the Dynamic Lists panel will appear automatically.
+---
 
 ## How It Works
 

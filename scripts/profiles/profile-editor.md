@@ -33,13 +33,7 @@ This script injects editing controls directly into the JSON view of a user's pro
 
 - **System Awareness:** Automatically detects whether a field already exists in the system or if it is a new custom field.
 
-## Installation
-
-1. **Userscript Manager:** Ensure you have Tampermonkey or Greasemonkey installed in your browser.
-
-2. **Install Script:** Click the link below to install the latest version.
-
-3. **Configure API Keys:** After installation, click the Tampermonkey icon in your browser, select **Manage Spaces & API Keys**, and enter your Iterable API key for the relevant projects.
+---
 
 ## How to Use
 

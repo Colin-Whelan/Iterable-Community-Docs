@@ -297,7 +297,7 @@ a:hover { text-decoration: underline; }
 .section-header p {
   color: var(--text-secondary);
   font-size: 15px;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 /* --- Search Bar --- */

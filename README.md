@@ -2,7 +2,7 @@
 
 Community-driven snippets, guides, and tips for [Iterable](https://iterable.com) email marketing.
 
-**Live site:** [aericode.github.io/iterable-community-docs](https://aericode.github.io/iterable-community-docs/)
+**Live site:** [colin-whelan.github.io/Iterable-Community-Docs/](https://colin-whelan.github.io/Iterable-Community-Docs/)
 
 ## What's Here
 
