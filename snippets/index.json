@@ -38,6 +38,19 @@
     "author": "Colin Whelan"
   },
   {
+    "slug": "logic/inline-arrays",
+    "title": "Handling Inline Arrays in Handlebars Email Templates",
+    "description": "A comprehensive guide to implementing custom inline array logic within Iterable email templates using Handlebars, including a workaround for parsing numeric and alphanumeric strings without native JSON support.",
+    "category": "logic",
+    "tags": [
+      "loop",
+      "workaround",
+      "advanced"
+    ],
+    "context": "email-template",
+    "author": "colin-whelan"
+  },
+  {
     "slug": "logic/nested-conditionals",
     "title": "Nested Conditional with Fallback",
     "description": "Demonstrates nested if/else logic with a safe fallback value when user profile fields may be missing.",
