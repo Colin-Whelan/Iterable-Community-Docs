@@ -31,7 +31,7 @@ The array is defined as a string variable using the `assign` helper.
 ```
 
 ### 2. The Parsing Snippet: `return_array_value`
-The logic relies on a reusable snippet named `return_array_value`. This snippet accepts the raw array string and a target index (or "size" for calculation). It iterates through every character of the string, identifying commas as delimiters to isolate individual values.
+The logic relies on a reusable snippet named `return_array_value` with 2 variables `z_myArray` and `return_index`. `z_myArray` will be the plaintext array, `return_index` is the index to return or the size of the array if "size" is passed. This snippet iterates through every character of the plaintext array, identifying commas as delimiters to isolate individual values.
 
 **Snippet Logic Breakdown:**
 *   **Preprocessing:** Removes brackets `[` and `]` and appends a trailing comma to ensure the last element is captured correctly.
