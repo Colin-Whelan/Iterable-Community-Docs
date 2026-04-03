@@ -7,7 +7,7 @@ context: email-template
 author: colin-whelan
 links:
   - label: Iterable Handlebars Documentation
-    url: https://support.iterable.com/hc/en-us/articles/360048125974-Handlebars-Templates-for-Emails
+    url: https://support.iterable.com/hc/en-us/articles/205480365-Personalizing-Templates-with-Handlebars
 ---
 
 # Handling Inline Arrays in Handlebars Email Templates
