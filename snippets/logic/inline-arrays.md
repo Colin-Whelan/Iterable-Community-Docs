@@ -39,6 +39,66 @@ The logic relies on a reusable snippet named `return_array_value`. This snippet 
 *   **Delimiter Detection:** When a comma `,` is encountered, the current accumulated value is finalized.
 *   **Index Matching:** If the current loop iteration matches the requested `return_index`, the value is returned; otherwise, it continues parsing.
 
+```handlebars
+{{!-- Prepping Array Format For Looping --}}
+{{#assign "zz_myArray"}}{{replace z_myArray "[" ""}}{{/assign}}
+{{#assign "zz_myArray"}}{{replace zz_myArray "]" ""}}{{/assign}}
+{{#assign "zz_myArray"}}{{zz_myArray}},{{/assign}}
+
+{{!-- Max chars in the array --}}
+{{#assign "max_index"}}999{{/assign}}
+
+{{!-- Outer Loop: Test Cases --}}
+{{#assign "t"}}0{{/assign}}
+{{#each ""}}
+{{#ifLt t max_index}}
+  
+  {{#assign "currentVal"}}{{/assign}}
+  {{#assign "found"}}{{/assign}}
+  
+  {{!-- handles ~500 char array max --}}
+  {{#each ""}}
+  {{#each ""}}
+    {{#unless found}}
+      {{#assign "char"}}{{substring zz_myArray 0 1}}{{/assign}}
+      
+      {{#ifEq char ","}}
+        {{#assign "found"}}true{{/assign}}
+      {{else}}
+        {{#assign "currentVal"}}{{currentVal}}{{char}}{{/assign}}
+      {{/ifEq}}
+      
+      {{!-- Move the queue forward by 1 char --}}
+      {{#assign "zz_myArray"}}{{substring zz_myArray 1}}{{/assign}}
+    {{/unless}}
+  {{/each}}
+  {{/each}}
+
+  {{!-- Output the result --}}
+  {{#assign "arrayValue"}}{{defaultIfEmpty currentVal "0"}}{{/assign}}
+  
+  {{!-- ignore out of bounds --}}
+    {{#ifContainsStr arrayValue "0101010101010101010101010101010101010101010101010101010101010101"}}
+    {{else}}
+        {{!-- dont't return any value when asking for 'size' --}}
+        {{#ifEq return_index "size"}}
+        {{else}}
+            {{!-- if the current index matches the return_index, output that value --}}
+            {{#ifEq t return_index}}
+                    {{arrayValue}}
+            {{/ifEq}}
+        {{/ifEq}}
+    
+      {{!-- Sets the max size of the array before out of bounds. --}}  
+      {{#assign "z_array_size"}}{{t}}{{/assign}}
+    {{/ifContainsStr}}
+    
+    {{!-- iterate the test --}}
+    {{#assign "t"}}{{math t "+" 1}}{{/assign}}
+{{/ifLt}}
+{{/each}}
+```
+
 ### 3. Template Execution Flow
 
 The following code block demonstrates how to integrate this logic into an email template:
